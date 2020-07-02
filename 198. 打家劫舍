@@ -1,0 +1,21 @@
+int rob(int* nums, int numsSize){
+    if(numsSize == 0)
+        return 0;
+    if(numsSize == 1)   
+        return nums[0];
+    if(numsSize == 2)
+        return nums[0]>nums[1]?nums[0]:nums[1];
+
+    int *totalNums = (int*)malloc(sizeof(int)*numsSize);
+    totalNums[0] = nums[0];
+    totalNums[1] = nums[0]>nums[1]?nums[0]:nums[1];
+    int temp1, temp2, i;
+
+    for(i=2; i<numsSize; ++i){
+        temp1 = totalNums[i-2] + nums[i];
+        temp2 = totalNums[i-1];
+        totalNums[i] = temp1>temp2?temp1:temp2;
+    }
+
+    return totalNums[numsSize-1];
+}
