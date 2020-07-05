@@ -1,0 +1,12 @@
+int hammingDistance(int x, int y){
+    int len = 0, i, temp1, temp2;
+    for(i = 0; i < 31; ++i){
+        temp1 = x % 2;
+        temp2 = y % 2;
+        x = x / 2;
+        y = y / 2;
+        if(temp1 != temp2)
+            ++len;
+    }
+    return len;
+}
